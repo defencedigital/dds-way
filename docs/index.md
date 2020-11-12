@@ -38,7 +38,7 @@ You can also read the service manual to find out about
 
 Thank you for your contributions as we develop this repository.
 
-## The GDS Way Forum
+## The DDS Way Forum
 
 This site documents some of the decisions agreed at the DDS Way Forum about the products we operate.
 
@@ -52,4 +52,4 @@ The Forum reviews:
 
 ### Contact The DDS Way Forum
 
-Contact the GDS Way Forum using the [#dds-way Slack channel](https://defencedigital.slack.com/messages/dds-way/) or by email at <a href="mailto:team@digital.mod.uk?subject=feedback">team@digital.mod.uk</a>.
+Contact the DDS Way Forum using the [#dds-way Slack channel](https://defencedigital.slack.com/messages/dds-way/) or by email at <a href="mailto:team@digital.mod.uk?subject=feedback">team@digital.mod.uk</a>.
