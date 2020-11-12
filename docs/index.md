@@ -52,4 +52,4 @@ The Forum reviews:
 
 ### Contact The DDS Way Forum
 
-Contact the GDS Way Forum using the [#dds-way Slack channel](https://defencedigital.slack.com.slack.com/messages/dds-way/) or by email at <a href="mailto:team@digital.mod.uk?subject=feedback">team@digital.mod.uk</a>.
+Contact the GDS Way Forum using the [#dds-way Slack channel](https://defencedigital.slack.com/messages/dds-way/) or by email at <a href="mailto:team@digital.mod.uk?subject=feedback">team@digital.mod.uk</a>.
