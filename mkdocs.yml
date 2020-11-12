@@ -5,7 +5,13 @@ docs_dir: docs/
 repo_name: 'defencedigital/dds-way'
 repo_url: 'https://github.com/defencedigital/dds-way'
 nav:
-    - DDS Way: index.md
+    - The DDS Way: index.md
+    - Onboarding: onboarding.md
+    - Software development: softwaredevelopment.md
+    - Version control and deployments: versioncontroldeployments.md
+    - Hosting and infrastructure: hostinginfrastructure.md
+    - Logging, monitoring and alerting: loggingmonitoringalerting.md
+    - Operating a service: operatingservice.md
 theme:
   name: material
   palette:
