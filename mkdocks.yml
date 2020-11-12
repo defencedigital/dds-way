@@ -1,0 +1,14 @@
+site_name: Defence Digital Service Way
+site_description: 'DDS-Way'
+site_author: 'DDS'
+docs_dir: docs/
+repo_name: 'defencedigital/dds-way'
+repo_url: 'https://github.com/defencedigital/dds-way'
+nav:
+    - DDS Way: index.md
+theme:
+  name: material
+  palette:
+    scheme: slate
+    primary: blue grey
+    accent: deep purple
