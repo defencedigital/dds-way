@@ -42,7 +42,7 @@ Thank you for your contributions as we develop this repository.
 
 This site documents some of the decisions agreed at the DDS Way Forum about the products we operate.
 
-The DDS Forum meets once a month. The Forum is lead developers and technical architects representing DDS programmes who are responsible for communicating and implementing the DDS Way.
+The DDS Forum meets once a month. The Forum is lead developers and technical architects representing DDS projects who are responsible for communicating and implementing the DDS Way.
 
 The Forum reviews:
 
