@@ -1,1 +1,201 @@
 # Version control and deployments
+
+At DDS, we follow the principles set out in the Service Manual for managing the code we write by:
+
+- [using version control](https://www.gov.uk/service-manual/technology/maintaining-version-control-in-coding)
+- [making source code open](https://www.gov.uk/service-manual/technology/making-source-code-open-and-reusable)
+
+## Publish open source code
+
+Wherever possible, we make our source code open and reusable. This means the rest of Defence, other government departments, and people in outside organisations can benefit from our work.
+
+It’s not always appropriate to code in the open. There are sometimes grounds for [keeping some data and code closed][], for example:
+
+- keys and credentials
+- algorithms and logic that exposes sensitive military workings
+- code or data that makes clear details of unannounced policy
+
+The Service Manual explains [how to open previously closed code and your responsibilities for maintaining open code][].
+
+When you publish open source code, your project must:
+
+* include a README
+* have useful and informative commit messages about why a change was made
+* provide a changelog
+* include an MIT and OGL licence file
+* link to a public list of known issues and bugs
+* have an email address to submit security related bug reports
+* list a version number compatible with [Semantic Versioning][]
+
+Your open source code project should:
+
+* publish packages to relevant language specific repositories such as [PyPI - the Python Package Index][]
+* post contributors' guidelines in a contributing file, like the [Go repository][]
+* set up any tests to run in a continuous integration environment (we currently use GitHub Actions)
+
+You could also provide a mailing list so people can discuss your project.
+
+## Use GitHub
+
+[DDS uses GitHub](https://github.com/defencedigital) as its code repository.
+
+Put new repositories for DDS services in the [defencedigital](https://github.com/defencedigital) organisation on GitHub.
+
+You can use your personal GitHub account to access `defencedigital`. Ask your tech lead or technical architect to invite you. DDS will revoke your access to `defencedigital` when you leave DDS.
+
+To secure your Github repository, make sure you:
+
+- configure two-factor authentication for your account (enforced at an organisation level)
+- have considered encrypting your repository contents
+- consider [protecting your main branch](https://help.github.com/articles/about-protected-branches/) to prevent changes being committed without a suitable review
+
+You can also consider backing up your Git repositories to another location (this should be a team responsibility). If you are using AWS to host your service
+[AWS CodeCommit](https://aws.amazon.com/codecommit/) is one option.
+
+### Naming repositories
+
+Naming conventions for repositories make it easier for people to find relevant ones and to understand how they interrelate. With that in mind:
+
+- all repositories should have a clear and logical name, so that people can see more or less what it does by simply reading the name
+- where there would otherwise be a space in the name, you should replace this with a hypeh (`-`), not a dot or any other punctuation
+- project-specific repos should have a logical and identifiable prefix prepended to their name. For example, Project R2-D2 has repos like `r2-d2-infra` and `r2-d2-docs`
+    - repos that aren't project-specific do not need anything prepended to them
+
+### How to retire applications
+
+If an application is no longer used in production, you should [archive its repository](https://help.github.com/articles/archiving-repositories/).
+
+Update the application's README to explain why the repository has been archived, and link to a new location if the application has been superseded.
+
+## Working with Git
+
+### Commit messages
+
+Writing good commit messages is important. Not just for yourself, but for other developers on your project. This includes:
+
+* new (or recently absent) developers who want to get up to speed on progress
+* interested external parties who want to follow progress of the project
+* people in the public (remember, we code in the open) who want to see our work, or learn from our practices
+* any future developers (including yourself) who want to see why a change was made
+
+Capturing context around a change allows people to understand why a particular implementation decision was made, much like an [architecture decision record](http://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions). We're being kinder to our future selves.
+
+#### Recommended blog posts on this topic
+
+* [How to Write a Git Commit Message](https://chris.beams.io/posts/git-commit/)
+* [5 useful tips for a better commit message](http://robots.thoughtbot.com/5-useful-tips-for-a-better-commit-message)
+* [Every line of code is always documented](http://mislav.uniqpath.com/2014/02/hidden-documentation/)
+
+#### Content
+
+A good commit message briefly summarises the "what" for scanning purposes, but also includes the "why". If the "what" in the message is not enough, the diff is there as a fallback. This is not true for the "why" of a change - this can be much harder or impossible to reconstruct, but is often of great significance.
+
+##### Example
+
+``Set cache headers``
+
+prefer:
+
+```
+Set cache headers
+
+IE 6 was doing foo, so we need to do bar.
+See http://example.com/why-is-this-broken for more details.
+```
+
+##### Links to issue trackers
+
+A link to a ticket in an issue tracker should not be seen as an alternative to writing a commit message.
+
+While a link can add some extra context for people reviewing
+a pull request, the commit message should stand on its own. There's no guarantee that the link will continue to work in the future when someone is looking through the commit history to understand why a change was made.
+
+If you are adding a link to a publicly viewable repository, ensure that the linked ticket is publicly viewable (and likely to remain so).
+
+#### Structure
+
+Commit messages should start with a one-line summary no longer than 50
+characters. Various Git tools (including GitHub) use this as the commit
+summary, so you should format it like an email subject, with a leading capital and no full stop. The Git convention is to write these in the present tense.
+
+For example:
+
+> Leverage best-of-breed synergies going forward
+
+You should leave a blank line before the rest of the commit message, which you should wrap at around 72 characters: this makes it easier to view commit messages in a terminal.
+
+##### Example
+
+Taken from [Tim Pope’s guidelines](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html).
+
+> Capitalized, short (50 chars or less) summary
+
+> More detailed explanatory text, if necessary.  Wrap it to about 72
+characters or so.  In some contexts, the first line is treated as the
+subject of an email and the rest of the text as the body.  The blank
+line separating the summary from the body is critical (unless you omit
+the body entirely); tools like rebase can get confused if you run the
+two together.
+
+> Write your commit message in the present tense: "Fix bug" and not "Fixed bug."  This convention matches up with commit messages generated by commands like git merge and git revert.
+
+> Further paragraphs come after blank lines.
+
+> - Bullet points are okay, too
+> - Typically a hyphen or asterisk is used for the bullet, preceded by a single space, with blank lines in between, but conventions vary here
+> - Use a hanging indent
+
+### Branching/merging conventions
+
+You may often choose to work on a particular feature on a "feature branch" rather than directly on `main`. Indeed, given how cheap branches are in Git, [using branches](http://git-scm.com/book/en/Git-Branching-Basic-Branching-and-Merging) is positively encouraged.
+
+You are encouraged to make liberal use of Git's [history rewriting
+features](http://git-scm.com/book/en/Git-Tools-Rewriting-History) while working locally, in order to arrange your commits into appropriate logical chunks that will make sense to your fellow developers. In particular, you may find `git rebase --interactive` very useful. 
+
+Branches should be deleted once a pull request has been merged (this option is automatically offered to the user once they have performed that merge, if using the GitHub interface).
+
+You are also encouraged to avoid merge commits and use `git rebase main` instead. However, you should not rewrite commits that have been pushed unless you:
+
+  * are very sure that no-one else will be affected by you rewriting the
+    branch history
+  * have an extremely good reason. For example: someone has committed
+    sensitive information (personally identifiable data, passwords and suchlike) and it needs purging from history
+
+When in doubt you should err towards smaller commits, which can be rebased together later. It's harder to break large commits out into smaller chunks.
+
+The smaller commits should still be logical chunks, but this will give context for a more specific change and make git tools like `annotate` and `log` more useful.
+
+When merging from a feature branch to `main` (or any other mainline development branch), in particular one that has previously been shared with colleagues, you should use `git merge`'s `--no-ff` option to preserve evidence of your feature branch in the repository history. This advice may be freely ignored for smaller local feature branches for which a fast-forward merge will look like any other routine development work on `main`.
+
+### Do not use `git push -f`, use `--force-with-lease` instead
+
+Force pushing in git is a subject that attracts all kinds of religious
+battles. This advice is not about the merits of force pushing. This is about how to use `git push -f` if and when you do use it.
+
+Let's say you're working on a branch, 'foobar', and you decide to force push to the remote. So you do this:
+
+```
+$ git push -f
+```
+
+If anyone else has committed anything to your branch since you last pulled, you will blow their changes away.
+
+So for a bit of safety, if you ever need to force push please instead do:
+
+```
+$ git push --force-with-lease
+```
+
+`--force-with-lease` [refuses to update a
+branch](https://developer.atlassian.com/blog/2015/04/force-with-lease/) unless it is the state that we expect, which is that nobody has updated the remote branch.
+
+[make our source code open and reusable]: https://www.gov.uk/service-manual/technology/making-source-code-open-and-reusable
+[MIT licence]: https://opensource.org/licenses/MIT
+[Specification for CPAN Changes files]: https://metacpan.org/pod/CPAN::Changes::Spec
+[Semantic Versioning]: https://semver.org/spec/v2.0.0.html
+[PyPI - the Python Package Index]: https://pypi.python.org/pypi
+[Go repository]: https://golang.org/CONTRIBUTORS
+[keeping some data and code closed]: https://www.gov.uk/government/publications/open-source-guidance/when-code-should-be-open-or-closed
+[how to open previously closed code and your responsibilities for maintaining open code]: https://www.gov.uk/service-manual/technology/making-source-code-open-and-reusable
+[Open Government Licence (OGL)]: https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+[Go repository]: https://golang.org/CONTRIBUTORS
