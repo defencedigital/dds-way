@@ -87,7 +87,7 @@ There are tools which scan GitHub repositories and raise PRs when they find depe
 Like dependencies, container base images are also frequently updated. If you run containers as part of your service, you should regularly rebuild your images (and base images) to include the latest updates. Automate this process where possible.
 
 ### Specifying container image tags
-The GDS Way Dockerfile guidance contains advice on how to use container image tags to specify the exact container image version to use.
+The DDS Way container guidance contains advice on how to use container image tags to specify the exact container image version to use.
 
 ## Building accessible services
 
