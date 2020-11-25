@@ -6,6 +6,7 @@ repo_name: 'defencedigital/dds-way'
 repo_url: 'https://github.com/defencedigital/dds-way'
 nav:
     - The DDS Way: index.md
+    - Service Manual Test: servicemanualtest.md
     - Onboarding: onboarding.md
     - Software development: softwaredevelopment.md
     - Version control and deployments: versioncontroldeployments.md
