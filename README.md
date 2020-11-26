@@ -1,6 +1,6 @@
 # The DDS Way
 
-[The DDS Way](https://defencedigital.github.io/dds-way/) is a format borrowed from the [GDS Way](https://gds-way.cloudapps.digital/) and outlines the way that we, the Defence Digital Service (DDS) work. It's a working document and instructions as to how you can contribute are below. 
+[The DDS Way](https://defencedigital.github.io/dds-way/) is a format borrowed from the [GDS Way](https://gds-way.cloudapps.digital/) and outlines the way that we, the Defence Digital Service (DDS) work. It's a working document and instructions as to how you can contribute are below. Elements are also borrowed from the [Ministry of Justice Technical Guidance](https://ministryofjustice.github.io/technical-guidance/)
 
 ## How it works
 
