@@ -1,0 +1,903 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="DDS-Way">
+      
+      
+      
+        <meta name="author" content="DDS">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.2">
+    
+    
+      
+        <title>Version control and deployments - The DDS Way</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6f955dcd.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#version-control-and-deployments" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="The DDS Way" class="md-header__button md-logo" aria-label="The DDS Way" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            The DDS Way
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Version control and deployments
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="" type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m10-3a5 5 0 0 1 5 5 5 5 0 0 1-5 5H7a5 5 0 0 1-5-5 5 5 0 0 1 5-5h10M7 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3h10a3 3 0 0 0 3-3 3 3 0 0 0-3-3H7z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent="" type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/defencedigital/dds-way/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    defencedigital/dds-way
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="The DDS Way" class="md-nav__button md-logo" aria-label="The DDS Way" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    The DDS Way
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/defencedigital/dds-way/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    defencedigital/dds-way
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        The DDS Way
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../servicemanualtest/" class="md-nav__link">
+        DDS Service Manual
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../userresearch/" class="md-nav__link">
+        User Research
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../onboarding/" class="md-nav__link">
+        Onboarding
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../softwaredevelopment/" class="md-nav__link">
+        Software development
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Version control and deployments
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Version control and deployments
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#publish-open-source-code" class="md-nav__link">
+    Publish open source code
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-github" class="md-nav__link">
+    Use GitHub
+  </a>
+  
+    <nav class="md-nav" aria-label="Use GitHub">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#naming-repositories" class="md-nav__link">
+    Naming repositories
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-retire-applications" class="md-nav__link">
+    How to retire applications
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-with-git" class="md-nav__link">
+    Working with Git
+  </a>
+  
+    <nav class="md-nav" aria-label="Working with Git">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#commit-messages" class="md-nav__link">
+    Commit messages
+  </a>
+  
+    <nav class="md-nav" aria-label="Commit messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recommended-blog-posts-on-this-topic" class="md-nav__link">
+    Recommended blog posts on this topic
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#content" class="md-nav__link">
+    Content
+  </a>
+  
+    <nav class="md-nav" aria-label="Content">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#links-to-issue-trackers" class="md-nav__link">
+    Links to issue trackers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structure" class="md-nav__link">
+    Structure
+  </a>
+  
+    <nav class="md-nav" aria-label="Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example_1" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#branchingmerging-conventions" class="md-nav__link">
+    Branching/merging conventions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#do-not-use-git-push-f-use-force-with-lease-instead" class="md-nav__link">
+    Do not use git push -f, use --force-with-lease instead
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hostinginfrastructure/" class="md-nav__link">
+        Hosting and infrastructure
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../loggingmonitoringalerting/" class="md-nav__link">
+        Logging, monitoring and alerting
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../operatingservice/" class="md-nav__link">
+        Operating a service
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#publish-open-source-code" class="md-nav__link">
+    Publish open source code
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-github" class="md-nav__link">
+    Use GitHub
+  </a>
+  
+    <nav class="md-nav" aria-label="Use GitHub">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#naming-repositories" class="md-nav__link">
+    Naming repositories
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-retire-applications" class="md-nav__link">
+    How to retire applications
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-with-git" class="md-nav__link">
+    Working with Git
+  </a>
+  
+    <nav class="md-nav" aria-label="Working with Git">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#commit-messages" class="md-nav__link">
+    Commit messages
+  </a>
+  
+    <nav class="md-nav" aria-label="Commit messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recommended-blog-posts-on-this-topic" class="md-nav__link">
+    Recommended blog posts on this topic
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#content" class="md-nav__link">
+    Content
+  </a>
+  
+    <nav class="md-nav" aria-label="Content">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#links-to-issue-trackers" class="md-nav__link">
+    Links to issue trackers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structure" class="md-nav__link">
+    Structure
+  </a>
+  
+    <nav class="md-nav" aria-label="Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example_1" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#branchingmerging-conventions" class="md-nav__link">
+    Branching/merging conventions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#do-not-use-git-push-f-use-force-with-lease-instead" class="md-nav__link">
+    Do not use git push -f, use --force-with-lease instead
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/defencedigital/dds-way/edit/master/docs/versioncontroldeployments.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="version-control-and-deployments">Version control and deployments</h1>
+<p>At DDS, we follow the principles set out in the Service Manual for managing the code we write by:</p>
+<ul>
+<li><a href="https://www.gov.uk/service-manual/technology/maintaining-version-control-in-coding">using version control</a></li>
+<li><a href="https://www.gov.uk/service-manual/technology/making-source-code-open-and-reusable">making source code open</a></li>
+</ul>
+<h2 id="publish-open-source-code">Publish open source code</h2>
+<p>Wherever possible, we make our source code open and reusable. This means the rest of Defence, other government departments, and people in outside organisations can benefit from our work.</p>
+<p>It’s not always appropriate to code in the open. There are sometimes grounds for <a href="https://www.gov.uk/government/publications/open-source-guidance/when-code-should-be-open-or-closed">keeping some data and code closed</a>, for example:</p>
+<ul>
+<li>keys and credentials</li>
+<li>algorithms and logic that exposes sensitive military workings</li>
+<li>code or data that makes clear details of unannounced policy</li>
+</ul>
+<p>The Service Manual explains <a href="https://www.gov.uk/service-manual/technology/making-source-code-open-and-reusable">how to open previously closed code and your responsibilities for maintaining open code</a>.</p>
+<p>When you publish open source code, your project must:</p>
+<ul>
+<li>include a README</li>
+<li>have useful and informative commit messages about why a change was made</li>
+<li>provide a changelog</li>
+<li>include an MIT and OGL licence file</li>
+<li>link to a public list of known issues and bugs</li>
+<li>have an email address to submit security related bug reports</li>
+<li>list a version number compatible with <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a></li>
+</ul>
+<p>Your open source code project should:</p>
+<ul>
+<li>publish packages to relevant language specific repositories such as <a href="https://pypi.python.org/pypi">PyPI - the Python Package Index</a></li>
+<li>post contributors' guidelines in a contributing file, like the <a href="https://golang.org/CONTRIBUTORS">Go repository</a></li>
+<li>set up any tests to run in a continuous integration environment (we currently use GitHub Actions)</li>
+</ul>
+<p>You could also provide a mailing list so people can discuss your project.</p>
+<h2 id="use-github">Use GitHub</h2>
+<p><a href="https://github.com/defencedigital">DDS uses GitHub</a> as its code repository.</p>
+<p>Put new repositories for DDS services in the <a href="https://github.com/defencedigital">defencedigital</a> organisation on GitHub.</p>
+<p>You can use your personal GitHub account to access <code>defencedigital</code>. Ask your tech lead or technical architect to invite you. DDS will revoke your access to <code>defencedigital</code> when you leave DDS.</p>
+<p>To secure your Github repository, make sure you:</p>
+<ul>
+<li>configure two-factor authentication for your account (enforced at an organisation level)</li>
+<li>have considered encrypting your repository contents</li>
+<li>consider <a href="https://help.github.com/articles/about-protected-branches/">protecting your main branch</a> to prevent changes being committed without a suitable review</li>
+</ul>
+<p>You can also consider backing up your Git repositories to another location (this should be a team responsibility). If you are using AWS to host your service
+<a href="https://aws.amazon.com/codecommit/">AWS CodeCommit</a> is one option.</p>
+<h3 id="naming-repositories">Naming repositories</h3>
+<p>Naming conventions for repositories make it easier for people to find relevant ones and to understand how they interrelate. With that in mind:</p>
+<ul>
+<li>all repositories should have a clear and logical name, so that people can see more or less what it does by simply reading the name</li>
+<li>where there would otherwise be a space in the name, you should replace this with a hypeh (<code>-</code>), not a dot or any other punctuation</li>
+<li>project-specific repos should have a logical and identifiable prefix prepended to their name. For example, Project R2-D2 has repos like <code>r2-d2-infra</code> and <code>r2-d2-docs</code><ul>
+<li>repos that aren't project-specific do not need anything prepended to them</li>
+</ul>
+</li>
+</ul>
+<h3 id="how-to-retire-applications">How to retire applications</h3>
+<p>If an application is no longer used in production, you should <a href="https://help.github.com/articles/archiving-repositories/">archive its repository</a>.</p>
+<p>Update the application's README to explain why the repository has been archived, and link to a new location if the application has been superseded.</p>
+<h2 id="working-with-git">Working with Git</h2>
+<h3 id="commit-messages">Commit messages</h3>
+<p>Writing good commit messages is important. Not just for yourself, but for other developers on your project. This includes:</p>
+<ul>
+<li>new (or recently absent) developers who want to get up to speed on progress</li>
+<li>interested external parties who want to follow progress of the project</li>
+<li>people in the public (remember, we code in the open) who want to see our work, or learn from our practices</li>
+<li>any future developers (including yourself) who want to see why a change was made</li>
+</ul>
+<p>Capturing context around a change allows people to understand why a particular implementation decision was made, much like an <a href="http://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions">architecture decision record</a>. We're being kinder to our future selves.</p>
+<h4 id="recommended-blog-posts-on-this-topic">Recommended blog posts on this topic</h4>
+<ul>
+<li><a href="https://chris.beams.io/posts/git-commit/">How to Write a Git Commit Message</a></li>
+<li><a href="http://robots.thoughtbot.com/5-useful-tips-for-a-better-commit-message">5 useful tips for a better commit message</a></li>
+<li><a href="http://mislav.uniqpath.com/2014/02/hidden-documentation/">Every line of code is always documented</a></li>
+</ul>
+<h4 id="content">Content</h4>
+<p>A good commit message briefly summarises the "what" for scanning purposes, but also includes the "why". If the "what" in the message is not enough, the diff is there as a fallback. This is not true for the "why" of a change - this can be much harder or impossible to reconstruct, but is often of great significance.</p>
+<h5 id="example">Example</h5>
+<p><code>Set cache headers</code></p>
+<p>prefer:</p>
+<pre><code>Set cache headers
+
+IE 6 was doing foo, so we need to do bar.
+See http://example.com/why-is-this-broken for more details.
+</code></pre>
+<h5 id="links-to-issue-trackers">Links to issue trackers</h5>
+<p>A link to a ticket in an issue tracker should not be seen as an alternative to writing a commit message.</p>
+<p>While a link can add some extra context for people reviewing
+a pull request, the commit message should stand on its own. There's no guarantee that the link will continue to work in the future when someone is looking through the commit history to understand why a change was made.</p>
+<p>If you are adding a link to a publicly viewable repository, ensure that the linked ticket is publicly viewable (and likely to remain so).</p>
+<h4 id="structure">Structure</h4>
+<p>Commit messages should start with a one-line summary no longer than 50
+characters. Various Git tools (including GitHub) use this as the commit
+summary, so you should format it like an email subject, with a leading capital and no full stop. The Git convention is to write these in the present tense.</p>
+<p>For example:</p>
+<blockquote>
+<p>Leverage best-of-breed synergies going forward</p>
+</blockquote>
+<p>You should leave a blank line before the rest of the commit message, which you should wrap at around 72 characters: this makes it easier to view commit messages in a terminal.</p>
+<h5 id="example_1">Example</h5>
+<p>Taken from <a href="http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html">Tim Pope’s guidelines</a>.</p>
+<blockquote>
+<p>Capitalized, short (50 chars or less) summary</p>
+<p>More detailed explanatory text, if necessary.  Wrap it to about 72
+characters or so.  In some contexts, the first line is treated as the
+subject of an email and the rest of the text as the body.  The blank
+line separating the summary from the body is critical (unless you omit
+the body entirely); tools like rebase can get confused if you run the
+two together.</p>
+<p>Write your commit message in the present tense: "Fix bug" and not "Fixed bug."  This convention matches up with commit messages generated by commands like git merge and git revert.</p>
+<p>Further paragraphs come after blank lines.</p>
+<ul>
+<li>Bullet points are okay, too</li>
+<li>Typically a hyphen or asterisk is used for the bullet, preceded by a single space, with blank lines in between, but conventions vary here</li>
+<li>Use a hanging indent</li>
+</ul>
+</blockquote>
+<h3 id="branchingmerging-conventions">Branching/merging conventions</h3>
+<p>You may often choose to work on a particular feature on a "feature branch" rather than directly on <code>main</code>. Indeed, given how cheap branches are in Git, <a href="http://git-scm.com/book/en/Git-Branching-Basic-Branching-and-Merging">using branches</a> is positively encouraged.</p>
+<p>You are encouraged to make liberal use of Git's <a href="http://git-scm.com/book/en/Git-Tools-Rewriting-History">history rewriting
+features</a> while working locally, in order to arrange your commits into appropriate logical chunks that will make sense to your fellow developers. In particular, you may find <code>git rebase --interactive</code> very useful. </p>
+<p>Branches should be deleted once a pull request has been merged (this option is automatically offered to the user once they have performed that merge, if using the GitHub interface).</p>
+<p>You are also encouraged to avoid merge commits and use <code>git rebase main</code> instead. However, you should not rewrite commits that have been pushed unless you:</p>
+<ul>
+<li>are very sure that no-one else will be affected by you rewriting the
+    branch history</li>
+<li>have an extremely good reason. For example: someone has committed
+    sensitive information (personally identifiable data, passwords and suchlike) and it needs purging from history</li>
+</ul>
+<p>When in doubt you should err towards smaller commits, which can be rebased together later. It's harder to break large commits out into smaller chunks.</p>
+<p>The smaller commits should still be logical chunks, but this will give context for a more specific change and make git tools like <code>annotate</code> and <code>log</code> more useful.</p>
+<p>When merging from a feature branch to <code>main</code> (or any other mainline development branch), in particular one that has previously been shared with colleagues, you should use <code>git merge</code>'s <code>--no-ff</code> option to preserve evidence of your feature branch in the repository history. This advice may be freely ignored for smaller local feature branches for which a fast-forward merge will look like any other routine development work on <code>main</code>.</p>
+<h3 id="do-not-use-git-push-f-use-force-with-lease-instead">Do not use <code>git push -f</code>, use <code>--force-with-lease</code> instead</h3>
+<p>Force pushing in git is a subject that attracts all kinds of religious
+battles. This advice is not about the merits of force pushing. This is about how to use <code>git push -f</code> if and when you do use it.</p>
+<p>Let's say you're working on a branch, 'foobar', and you decide to force push to the remote. So you do this:</p>
+<pre><code>$ git push -f
+</code></pre>
+<p>If anyone else has committed anything to your branch since you last pulled, you will blow their changes away.</p>
+<p>So for a bit of safety, if you ever need to force push please instead do:</p>
+<pre><code>$ git push --force-with-lease
+</code></pre>
+<p><code>--force-with-lease</code> <a href="https://developer.atlassian.com/blog/2015/04/force-with-lease/">refuses to update a
+branch</a> unless it is the state that we expect, which is that nobody has updated the remote branch.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../softwaredevelopment/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Software development
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../hostinginfrastructure/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Hosting and infrastructure
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.4ea5477f.min.js"></script>
+      
+    
+  </body>
+</html>
